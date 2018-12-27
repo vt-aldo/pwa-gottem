@@ -10,7 +10,7 @@
       <a mat-list-item [routerLink]="['another-page']">Another page</a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content class="content">
+  <mat-sidenav-content class="sidenav-content">
     <mat-toolbar color="primary">
       <button
         type="button"
@@ -22,6 +22,8 @@
       </button>
       <span>HA! GOTTEM 👌</span>
     </mat-toolbar>
-    <router-outlet></router-outlet>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
