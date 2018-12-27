@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { GottemNavComponent } from './gottem-nav/gottem-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { AnotherPageComponent } from './another-page/another-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GottemNavComponent
+    GottemNavComponent,
+    AnotherPageComponent
   ],
   imports: [
     BrowserModule,
