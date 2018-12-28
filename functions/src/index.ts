@@ -28,7 +28,7 @@ const news = [
   {
     title: "Sleep is the only respite",
     blurb: "Better enjoy it while you can",
-    image: "https://imgur.com/zygRxDV"
+    image: "https://imgur.com/zygRxDV.png"
   }
 ];
 
