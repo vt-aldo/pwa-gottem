@@ -8,14 +8,21 @@ import { NewsService } from '../news.service';
 })
 export class HomePageComponent implements OnInit {
   news;
+  newsLoading;
 
   constructor(
     private newsService: NewsService,
   ) { }
 
   ngOnInit() {
+    this.newsLoading = true;
     this.newsService.getNews().subscribe(data => {
+      this.newsLoading = false;
       this.news = data;
+    },
+    error => {
+      this.newsLoading = false;
+      this.news = false;
     });
   }
 

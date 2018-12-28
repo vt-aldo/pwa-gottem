@@ -4,4 +4,6 @@
   <button mat-raised-button color="primary">Send 👌</button>
 
   <app-news-item [news]="news" *ngIf="news" class="news"></app-news-item>
+  <p *ngIf="!news && newsLoading">Loading...</p>
+  <p *ngIf="!news && !newsLoading">We couldn't retrieve news. Check your connection</p>
 </div>
