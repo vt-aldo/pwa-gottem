@@ -24,6 +24,11 @@ const news = [
     title: "Butter makes cats sad",
     blurb: "Please say no to lipids",
     image: "https://i.kym-cdn.com/photos/images/newsfeed/001/384/535/295.jpg"
+  },
+  {
+    title: "Sleep is the only respite",
+    blurb: "Better enjoy it while you can",
+    image: "https://memestatic.fjcdn.com/pictures/Sad+cats_c27c35_6536312.jpg"
   }
 ];
 

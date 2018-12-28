@@ -2,4 +2,6 @@
   <p>Press the button to send!</p>
 
   <button mat-raised-button color="primary">Send 👌</button>
+
+  <app-news-item [news]="news" *ngIf="news" class="news"></app-news-item>
 </div>
