@@ -12,6 +12,19 @@ import { sample } from 'lodash';
 
 const app = express();
 
+const vapidKeys = {
+  "publicKey": "BC8iHicSX9qdAZkS1DB1iNhRwVbD8YSq_lvbn8r3flIvnI6c2q8gpUZOpn2i7WgBgv-qzeHIUf1jzX9AxH4flkM",
+  "privateKey": "WpRTyy6_NbNJXj2cKRjXXyM51-XyMNY9PRMht1Zb5LM"
+};
+
+const webpush = require('web-push');
+
+webpush.setVapidDetails(
+  'mailto:mrawesomer34@gmail.com',
+  vapidKeys.publicKey,
+  vapidKeys.privateKey
+);
+
 app.use(cors({ origin: true }));
 
 const news = [
@@ -37,7 +50,32 @@ app.get('/news', (req, res) => {
 });
 
 app.post('/gottem', (req, res) => {
-  // Push notif logic here
+  const sentData = {
+    message: 'HA! GOTTEM!',
+  };
+
+  const notifPayload = {
+    "notification": {
+      "title": "Hello there",
+      "body": "You have won 100BTC!",
+      "icon": "assets/images/gold-bitcoin-icon-0.png",
+      "vibrate": [100, 50, 100],
+      "data": {
+        "dateOfArrival": Date.now(),
+        "primaryKey": 1
+      },
+      "actions": [{
+        "action": "get!",
+        "title": "Claim your prize!"
+      }]
+    }
+  };
+
+  webpush.sendNotification(sentData, notifPayload)
+    .then(() => res.status(200).json({ message: 'Sent!' }))
+    .catch(err => res.status(400).json({
+      message: 'Something went wrong: ' + err
+    }));
 });
 
 exports.endpoints = functions.https.onRequest(app);
