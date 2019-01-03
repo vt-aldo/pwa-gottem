@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../news.service';
 import { SwPush } from '@angular/service-worker';
+import { SubscribeService } from '../subscribe.service';
 
 @Component({
   selector: 'app-home-page',
@@ -11,17 +12,13 @@ export class HomePageComponent implements OnInit {
   news;
   newsLoading;
 
-  subscribeToNotifs() {
-    this.swPush.requestSubscription({
-      serverPublicKey:
-        'BC8iHicSX9qdAZkS1DB1iNhRwVbD8YSq_lvbn8r3flIvnI6c2q8gpUZOpn2i7WgBgv-qzeHIUf1jzX9AxH4flkM'
-    }).then(sub => console.log('Subscribed!'))
-    .catch(err => console.log('Could not subscribe. Maybe they declined.'));
+  sendNotif() {
+    this.subscribeService.sendNotif();
   }
 
   constructor(
     private newsService: NewsService,
-    private swPush: SwPush,
+    private subscribeService: SubscribeService,
   ) { }
 
   ngOnInit() {
@@ -35,7 +32,7 @@ export class HomePageComponent implements OnInit {
       this.news = false;
     });
 
-    this.subscribeToNotifs();
+    this.subscribeService.subscribe();
   }
 
 }

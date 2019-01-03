@@ -2,8 +2,8 @@
   "name": "Gottem",
   "short_name": "Gottem",
   "start_url": "./",
-  "theme_color": "#008080",
-  "background_color": "#008B8B",
+  "theme_color": "#c2185b",
+  "background_color": "#c2185b",
   "display": "standalone",
   "description": "A PWA that is built with Angular",
   "icons": [

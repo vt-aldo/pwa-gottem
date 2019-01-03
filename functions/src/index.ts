@@ -45,8 +45,15 @@ const news = [
   }
 ];
 
+const fakeDb = [];
+
 app.get('/news', (req, res) => {
   res.send(sample(news));
+});
+
+app.post('/subscribe', (req, res) => {
+  fakeDb.push(req.body);
+  res.status(200).send(fakeDb);
 });
 
 app.post('/gottem', (req, res) => {
@@ -71,7 +78,13 @@ app.post('/gottem', (req, res) => {
     }
   };
 
-  webpush.sendNotification(sentData, notifPayload)
+  const promises = [];
+  fakeDb.forEach(subscription => {
+    console.log('subscription:');
+    console.log(subscription);
+    promises.push(webpush.sendNotification(subscription, JSON.stringify(notifPayload)));
+  });
+  Promise.all(promises)
     .then(() => res.status(200).json({ message: 'Sent!' }))
     .catch(err => res.status(400).json({
       message: 'Something went wrong: ' + err
