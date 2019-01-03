@@ -1,7 +1,7 @@
 {
   "name": "Gottem",
   "short_name": "Gottem",
-  "start_url": "./",
+  "start_url": "/",
   "theme_color": "#c2185b",
   "background_color": "#c2185b",
   "display": "standalone",
